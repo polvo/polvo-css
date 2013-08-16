@@ -10,9 +10,11 @@ module.exports = new (Index = (function() {
 
   Index.prototype.polvo = true;
 
-  Index.prototype.type = 'css';
+  Index.prototype.type = 'style';
 
   Index.prototype.name = 'css';
+
+  Index.prototype.output = 'css';
 
   Index.prototype.ext = /\.css$/m;
 

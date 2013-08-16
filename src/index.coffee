@@ -5,8 +5,10 @@ module.exports = new class Index
 
   polvo: true
 
-  type: 'css'
+  type: 'style'
   name: 'css'
+  output: 'css'
+
   ext: /\.css$/m
   exts: [ '.css' ]
 

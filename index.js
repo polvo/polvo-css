@@ -18,7 +18,7 @@ module.exports = new (Index = (function() {
 
   Index.prototype.exts = ['.css'];
 
-  Index.prototype.compile = function(filepath, source, done) {
+  Index.prototype.compile = function(filepath, source, debug, done) {
     return done(source, null);
   };
 

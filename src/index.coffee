@@ -10,5 +10,5 @@ module.exports = new class Index
   ext: /\.css$/m
   exts: [ '.css' ]
 
-  compile:( filepath, source, done )->
+  compile:( filepath, source, debug, done )->
     done source, null

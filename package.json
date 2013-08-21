@@ -1,6 +1,6 @@
 {
   "name": "polvo-css",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Anderson Arboleya <anderson@arboleya.me>",
   "description": "CSS plugin for Polvo",
   "keywords": [
@@ -20,6 +20,7 @@
     "source-map-support": "0.2.x"
   },
   "devDependencies": {
-    "coffee-script": "1.6.x"
+    "coffee-script": "1.6.x",
+    "mversion": "~0.2.0"
   }
 }

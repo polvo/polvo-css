@@ -3,6 +3,7 @@
 
 path = require 'path'
 fs = require 'fs'
+clone = require 'regexp-clone'
 
 module.exports = new class Index
 
@@ -53,14 +54,15 @@ module.exports = new class Index
 
     for each in files
 
-      has_imports.lastIndex = 0
-      continue if not has_imports.test each.raw
+      has = clone has_imports
+      all = clone match_all
+
+      continue if not has.test each.raw
 
       dirpath = path.dirname each.filepath
       name = path.basename each.filepath
 
-      match_all.lastIndex = 0
-      while (match = match_all.exec each.raw)?
+      while (match = all.exec each.raw)?
         include = match[1]
         include = include.replace(/\.css$/m, '') + '.css'
         include = path.join dirpath, include
@@ -75,22 +77,25 @@ module.exports = new class Index
 
   render_partials:( filepath, source, error )->
 
-    has_imports.lastIndex = 0
-    return source if not has_imports.test source
+    has = clone has_imports
+    all = clone match_all
 
-    match_all.lastIndex = 0
-    while (match = match_all.exec source)
+    return source if not has.test source
+
+    buffer = source
+    while (match = all.exec source)?
       full = match[0]
       include = match[1]
       include_path = path.join (path.dirname filepath), include
       include_path = include_path.replace(/\.css$/m, '') + '.css'
 
       if fs.existsSync include_path
-        include_contents = fs.readFileSync(include_path).toString()
+        partial_content = fs.readFileSync(include_path).toString()
+        partial_content = @render_partials include_path, partial_content, error
       else
-        include_contents = ''
+        partial_content = ''
         error "file '#{include}' do not exist"
 
-      source = source.replace full, include_contents
+      buffer = buffer.replace full, partial_content
 
-    source
+    buffer

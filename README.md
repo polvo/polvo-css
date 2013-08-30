@@ -8,7 +8,7 @@ With this plugin, Polvo can handle CSS source files.
 
 [![Dependency Status](https://gemnasium.com/polvo/polvo-css.png)](https://gemnasium.com/polvo/polvo-css) [![NPM version](https://badge.fury.io/js/polvo-css.png)](http://badge.fury.io/js/polvo-css)
 
-# Installation
+# Install
 
 You won't need to install it since it comes built in in Polvo.
 

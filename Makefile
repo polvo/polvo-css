@@ -1,6 +1,6 @@
 CS=node_modules/coffee-script/bin/coffee
 
-MVERSION=node_modules/.bin/mversion
+MVERSION=node_modules/mversion/bin/version
 VERSION=`$(MVERSION) | sed -E 's/\* package.json: //g'`
 
 ISTANBUL=node_modules/istanbul/lib/cli.js
@@ -15,10 +15,10 @@ setup:
 
 
 watch:
-	@$(CS) -bwco lib src
+	@$(CS) -bwmco lib src
 
 build:
-	@$(CS) -bco lib src
+	@$(CS) -bcmo lib src
 
 
 
@@ -29,7 +29,7 @@ test: build
 		--recursive \
 		tests/unit
 
-test.coverage:
+test.coverage: build
 	@$(ISTANBUL) cover $(_MOCHA) -- \
 		--compilers coffee:coffee-script \
 		--ui bdd \

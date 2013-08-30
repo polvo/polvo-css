@@ -4,6 +4,8 @@ With this plugin, Polvo can handle CSS source files.
 
 [![Stories in Ready](https://badge.waffle.io/polvo/polvo-css.png)](https://waffle.io/polvo/polvo-css)
 
+[![Build Status](https://secure.travis-ci.org/polvo/polvo-css.png)](http://travis-ci.org/polvo/polvo-css) [![Coverage Status](https://coveralls.io/repos/polvo/polvo-css/badge.png)](https://coveralls.io/r/polvo/polvo-css)
+
 [![Dependency Status](https://gemnasium.com/polvo/polvo-css.png)](https://gemnasium.com/polvo/polvo-css) [![NPM version](https://badge.fury.io/js/polvo-css.png)](http://badge.fury.io/js/polvo-css)
 
 # Installation

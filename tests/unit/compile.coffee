@@ -31,11 +31,11 @@ describe '[polvo-css]', ->
     count.out.should.equal 1
     count.err.should.equal 1
 
-  it 'should return all file dependents', ->
+  it 'should return all file dependents, independently on how nested it is', ->
     list = []
     for file in fsu.find fixtures, /\.css/
       list.push filepath:file, raw: fs.readFileSync(file).toString()
 
-    dependents = css.resolve_dependents {filepath:paths._d}, list
+    dependents = css.resolve_dependents paths._d, list
     dependents.length.should.equal 1
     dependents[0].filepath.should.equal paths.base

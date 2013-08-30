@@ -49,7 +49,7 @@ module.exports = new class Index
   compile:( filepath, source, debug, error, done )->
     done @render_partials(filepath, source, error), null
 
-  resolve_dependents:( file, files )->
+  resolve_dependents:( filepath, files )->
     dependents = []
 
     for each in files
@@ -67,11 +67,12 @@ module.exports = new class Index
         include = include.replace(/\.css$/m, '') + '.css'
         include = path.join dirpath, include
 
-        if include is file.filepath
+        if include is filepath
           if not @is_partial name
             dependents.push each
           else
-            dependents = dependents.concat @resolve_dependents each, files
+            sub = @resolve_dependents each.filepath, files
+            dependents =  dependents.concat sub
 
     dependents
 

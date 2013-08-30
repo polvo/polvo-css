@@ -53,21 +53,18 @@ module.exports = new class Index
     dependents = []
 
     for each in files
-
-      has = clone has_imports
-      all = clone match_all
-
+      [has, all] = [clone(has_imports), clone(match_all)]
       continue if not has.test each.raw
 
       dirpath = path.dirname each.filepath
       name = path.basename each.filepath
 
       while (match = all.exec each.raw)?
-        include = match[1]
-        include = include.replace(/\.css$/m, '') + '.css'
-        include = path.join dirpath, include
+        impor7 = match[1]
+        impor7 = impor7.replace(/\.css$/m, '') + '.css'
+        impor7 = path.join dirpath, impor7
 
-        if include is filepath
+        if impor7 is filepath
           if not @is_partial name
             dependents.push each
           else
@@ -77,25 +74,22 @@ module.exports = new class Index
     dependents
 
   render_partials:( filepath, source, error )->
-
-    has = clone has_imports
-    all = clone match_all
-
+    [has, all] = [clone(has_imports), clone(match_all)]
     return source if not has.test source
 
     buffer = source
     while (match = all.exec source)?
       full = match[0]
-      include = match[1]
-      include_path = path.join (path.dirname filepath), include
-      include_path = include_path.replace(/\.css$/m, '') + '.css'
+      impor7 = match[1]
+      impor7_path = path.join (path.dirname filepath), impor7
+      impor7_path = impor7_path.replace(/\.css$/m, '') + '.css'
 
-      if fs.existsSync include_path
-        partial_content = fs.readFileSync(include_path).toString()
-        partial_content = @render_partials include_path, partial_content, error
+      if fs.existsSync impor7_path
+        partial_content = fs.readFileSync(impor7_path).toString()
+        partial_content = @render_partials impor7_path, partial_content, error
       else
         partial_content = ''
-        error "file '#{include}' do not exist for '#{filepath}'"
+        error "file '#{impor7}' do not exist for '#{filepath}'"
 
       buffer = buffer.replace full, partial_content
 

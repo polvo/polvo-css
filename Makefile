@@ -9,10 +9,10 @@ setup:
 
 
 watch:
-	@$(CS) -bwc index.coffee
+	@$(CS) -bwco lib src
 
 build:
-	@$(CS) -bc index.coffee
+	@$(CS) -bco lib src
 
 
 

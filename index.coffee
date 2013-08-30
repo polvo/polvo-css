@@ -94,7 +94,7 @@ module.exports = new class Index
         partial_content = @render_partials include_path, partial_content, error
       else
         partial_content = ''
-        error "file '#{include}' do not exist"
+        error "file '#{include}' do not exist for '#{filepath}'"
 
       buffer = buffer.replace full, partial_content
 

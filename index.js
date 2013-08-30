@@ -86,7 +86,7 @@ module.exports = new (Index = (function() {
         partial_content = this.render_partials(include_path, partial_content, error);
       } else {
         partial_content = '';
-        error("file '" + include + "' do not exist");
+        error("file '" + include + "' do not exist for '" + filepath + "'");
       }
       buffer = buffer.replace(full, partial_content);
     }

@@ -1,3 +1,9 @@
+---
 language: node_js
-node_js: 0.10
+node_js: 0.1
 script: make test.coverage.coveralls
+env:
+  global:
+    secure: ! 'au1gfbQ+kPN75SMEc0qN7wuXoYXw1kfnKgLKDEaUCc8YF/pryplx5FK19Vib
+               YbW0xc7S+UOLyjnRGAcgRHWa6HKImuZiSp/qV7oWCydf78FdUKvGp5oGUkWr
+               7hcwb44bmDw2FQ5LebqUXgLyIiJFLFaJdHADhe/ccbOWYfB74U8='
